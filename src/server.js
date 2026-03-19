@@ -8,7 +8,7 @@ require('dotenv').config();
 const configViewEngine = require('./config/ViewEngine');
 const webRouters = require('./routes/web');
 const apiRoutes = require('./routes/api');
-// const bodyParser = require('body-parser'); // Bạn không dùng đến biến này nên có thể bỏ qua
+
 const path = require('path');
 const Account = require('./models/AccountModel');
 
@@ -29,37 +29,41 @@ app.use(session({
   secret: process.env.SERVER_SECRET_KEY,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Lưu ý: Nếu web chạy HTTPS trên Vercel, lý tưởng nhất là secure: true, nhưng tạm thời để false vẫn chạy được.
+  cookie: { 
+    secure: true, 
+    sameSite: 'lax' 
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Google Strategy
 passport.use(new googleStrategy({
-  clientID: process.env.GOOGLE_ID,
-  clientSecret: process.env.GOOGLE_SECRET,
-  callbackURL: process.env.GOOGLE_CALLBACK_URL || "http://localhost:9000/auth/google/callback",
-}, (accessToken, refreshToken, profile, done) => {
-  const email = profile.emails[0].value;
+    clientID: process.env.GOOGLE_ID,
+    clientSecret: process.env.GOOGLE_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL,
+    proxy: true 
+  }, (accessToken, refreshToken, profile, done) => {
+    const email = profile.emails[0].value;
 
-  Account.findByEmail(email, (err, existingUser) => {
-    if (err) return done(err);
+    Account.findByEmail(email, (err, existingUser) => {
+      if (err) return done(err);
 
-    if (!existingUser) {
-      const newUser = {
-        email: email,
-        password: '',
-        role: 'customer'
-      };
+      if (!existingUser) {
+        const newUser = {
+          email: email,
+          password: '', 
+          role: 'customer'
+        };
 
-      Account.create(newUser, (err, createdUser) => {
-        if (err) return done(err);
-        done(null, createdUser); 
-      });
-    } else {
-      done(null, existingUser);
-    }
-  });
+        Account.create(newUser, (err, createdUser) => {
+          if (err) return done(err);
+          done(null, createdUser); 
+        });
+      } else {
+        done(null, existingUser);
+      }
+    });
 }));
 
 passport.serializeUser((user, done) => {
