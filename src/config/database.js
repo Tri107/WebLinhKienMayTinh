@@ -16,12 +16,5 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-connection.connect((err) => {
-    if (err) {
-      console.error(' Kết nối thất bại:', err.stack);
-      return;
-    }
-    console.log(' Kết nối thành công đến MySQL với ID:', connection.threadId);
-  });
 module.exports = connection;
 
