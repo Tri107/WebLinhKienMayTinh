@@ -424,6 +424,6 @@ BEGIN
 END //
 
 DELIMITER ;
-
+ALTER TABLE account MODIFY password VARCHAR(255) NULL;
 
 

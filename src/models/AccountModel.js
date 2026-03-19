@@ -13,15 +13,12 @@ Account.create = (newAccount, result) => {
       result(err, null);
       return;
     }
-
-    console.log("created account: ", { id: res.insertId, ...newAccount });
     result(null, { id: res.insertId, ...newAccount });
   });
 };
 
-
 Account.findById = (id, result) => {
-  sql.query(`SELECT * FROM account WHERE id = ${id}`, (err, res) => {
+  sql.query("SELECT * FROM account WHERE id = ?", [id], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -29,7 +26,6 @@ Account.findById = (id, result) => {
     }
 
     if (res.length) {
-      console.log("found account: ", res[0]);
       result(null, res[0]);
       return;
     }
@@ -48,12 +44,9 @@ Account.findByEmail = (email, result) => {
       return result(null, res[0]);
     }
 
-    // ✅ Trả đúng là null nếu không có
     return result(null, null);
   });
 };
-
-
 
 Account.getAll = (email, requesterRole, result) => {
   let query = "SELECT * FROM account";
@@ -71,20 +64,18 @@ Account.getAll = (email, requesterRole, result) => {
   sql.query(query, params, (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(null, err);
+      result(err, null);
       return;
     }
     result(null, res);
   });
 };
 
-
 Account.updateById = (id, account, result) => {
-    // Kiểm tra nếu tài khoản là superadmin
     sql.query("SELECT role FROM account WHERE id = ?", [id], (err, res1) => {
         if (err) {
             console.log("error: ", err);
-            result(null, err);
+            result(err, null);
             return;
         }
 
@@ -98,7 +89,6 @@ Account.updateById = (id, account, result) => {
             return;
         }
 
-        // Xây dựng câu query động
         let fields = [];
         let values = [];
 
@@ -107,7 +97,7 @@ Account.updateById = (id, account, result) => {
             values.push(account.email);
         }
 
-        if (account.password) {
+        if (account.password !== undefined) { 
             fields.push("password = ?");
             values.push(account.password);
         }
@@ -117,36 +107,26 @@ Account.updateById = (id, account, result) => {
             values.push(account.role);
         }
 
-        values.push(id);
+        if (fields.length === 0) return result(null, { id: id, ...account });
 
+        values.push(id);
         const query = `UPDATE account SET ${fields.join(", ")} WHERE id = ?`;
 
         sql.query(query, values, (err, res2) => {
             if (err) {
                 console.log("error: ", err);
-                result(null, err);
+                result(err, null);
                 return;
             }
-
-            if (res2.affectedRows === 0) {
-                result({ kind: "not_found" }, null);
-                return;
-            }
-
-            console.log("updated account: ", { id: id, ...account });
             result(null, { id: id, ...account });
         });
     });
 };
 
-
-
 Account.remove = (id, result) => {
-  // Trước tiên kiểm tra nếu là superadmin
-  sql.query("SELECT role FROM account WHERE id = ?", id, (err, res1) => {
+  sql.query("SELECT role FROM account WHERE id = ?", [id], (err, res1) => {
     if (err) {
-      console.log("error: ", err);
-      result(null, err);
+      result(err, null);
       return;
     }
 
@@ -160,25 +140,15 @@ Account.remove = (id, result) => {
       return;
     }
 
-    // Nếu không phải superadmin → tiếp tục xóa
-    sql.query("DELETE FROM account WHERE id = ?", id, (err, res2) => {
+    sql.query("DELETE FROM account WHERE id = ?", [id], (err, res2) => {
       if (err) {
-        console.log("error: ", err);
-        result(null, err);
+        result(err, null);
         return;
       }
-
-      if (res2.affectedRows == 0) {
-        result({ kind: "not_found" }, null);
-        return;
-      }
-
-      console.log("deleted account with id: ", id);
       result(null, res2);
     });
   });
 };
-
 
 Account.updatePasswordByEmail = (email, hashedPassword, result) => {
   sql.query(
@@ -189,17 +159,9 @@ Account.updatePasswordByEmail = (email, hashedPassword, result) => {
         result(err, null);
         return;
       }
-
-      if (res.affectedRows == 0) {
-        result({ kind: "not_found" }, null);
-        return;
-      }
-
       result(null, res);
     }
   );
 };
-
-
 
 module.exports = Account;

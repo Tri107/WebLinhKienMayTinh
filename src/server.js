@@ -52,7 +52,7 @@ passport.use(new googleStrategy({
       if (!existingUser) {
         const newUser = {
           email: email,
-          password: '', 
+          password: null, 
           role: 'customer'
         };
 
