@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- MAIN HEADER -->
+    <div id="header">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- LOGO -->
+                <div class="col-md-3">
+                    <div class="header-logo">
+                        <a href="/" class="logo">
+                            <img src="/images/storeLogo2.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <!-- /LOGO -->
+                <!-- SEARCH BAR -->
+                <div class="col-md-6">
+                    <div class="header-search">
+                        <form id="search-form" method="GET" action="/store">
+                            <input class="input" id="search-input" name="q" placeholder="Tìm kiếm">
+                            <button class="search-btn" type="submit"><i class="fa fa-magnifying-glass"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <!-- /SEARCH BAR -->
+
+
+                <!-- /SEARCH BAR -->
+
+                <!-- ACCOUNT -->
+                <div class="col-md-3 clearfix">
+                    <div class="header-ctn">
+                        <!-- Cart -->
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Giỏ Hàng</span>
+                                <div class="qty">0</div>
+                            </a>
+
+                            <div class="cart-dropdown" style="display: none;">
+                                <div class="cart-list">
+
+                                </div>
+                                <div class="cart-summary">
+                                    <small>Số sản phẩm đã chọn</small>
+                                    <h5>TỔNG TIỀN: 0 VNĐ</h5>
+                                </div>
+                                <div class="cart-btns">
+                                    <a href="/cart">Xem Giỏ Hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Cart -->
+
+                        <!--Account-->
+                        <div class="dropdown Account account-box-container position-relative">
+                            <a a class="dropdown-toggle d-flex account-box-toggle" data-toggle="dropdown"
+                                aria-expanded="true">
+                                <i class="fa fa-user-o"></i>
+                                <span class="account-box-username" style="cursor:default">
+                                    <% if (!user) { %>
+                                        Guest
+                                        <% } else if (customer && customer.last_name && customer.first_name) { %>
+                                            <%= customer.last_name + " " + customer.first_name %>
+                                                <% } else { %>
+                                                    User
+                                                    <% } %>
+
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu pull-left account-box-menu" aria-labelledby="userDropdown">
+                                <% if (user) { %>
+                                    <li>
+                                        <p class="greetings account-box-greeting">
+                                            <strong>Xin chào, <%= (customer && customer.last_name &&
+                                                    customer.first_name) ? customer.last_name + " " +
+                                                    customer.first_name : "User" %>!</strong>
+                                        </p>
+                                    </li>
+                                    <li class="account-box-li">
+                                        <a class="dropdown-item account-box-item" href="/userInfo">
+                                            <i class="fas fa-user account-box-icon text-primary"></i> Hồ sơ
+                                        </a>
+                                    </li>
+                                    <li class="account-box-li">
+                                        <a class="dropdown-item account-box-item" href="/userInfo#order-history">
+                                            <i class="fas fa-list account-box-icon text-success"></i> Lịch sử đơn hàng
+                                        </a>
+                                    </li>
+                                    <li class="account-box-li">
+                                        <a class="dropdown-item account-box-item" href="/lastViewProducts">
+                                            <i class="fas fa-eye account-box-icon text-success"></i> Sản phẩm đã xem
+                                        </a>
+                                    </li>
+
+                                    <% if (user.role==='admin' || user.role==='superadmin' ) { %>
+                                        <li class="account-box-li">
+                                            <a class="dropdown-item account-box-item" href="/dashboard">
+                                                <i class="fas fa-tachometer-alt account-box-icon text-success"></i> Bảng
+                                                điều khiển
+                                            </a>
+                                        </li>
+                                        <% } %>
+
+                                            <li>
+                                                <!-- <hr class="dropdown-divider"> -->
+                                                <hr class="account-box-divider">
+                                            </li>
+                                            <li class="account-box-li">
+                                                <a class="dropdown-item account-box-item text-danger" href="/logout"
+                                                    id="logoutBtn">
+                                                    <i class="fas fa-sign-out-alt account-box-icon"></i> Đăng xuất
+                                                </a>
+                                            </li>
+                                            <% } else { %>
+                                                <li class="account-box-li">
+                                                    <a class="dropdown-item account-box-item" href="/login">
+                                                        <i class="fas fa-sign-in-alt account-box-icon text-primary"></i>
+                                                        Đăng nhập
+                                                    </a>
+                                                </li>
+                                                <li class="account-box-li">
+                                                    <a class="dropdown-item account-box-item" href="/register">
+                                                        <i class="fas fa-user-plus account-box-icon text-success"></i>
+                                                        Đăng ký
+                                                    </a>
+                                                </li>
+                                                <% } %>
+                            </ul>
+                        </div>
+
+
+
+                        <!--/Account-->
+                        <!-- Menu Toogle -->
+                        <div class="menu-toggle">
+                            <a href="#">
+                                <i class="fa fa-bars"></i>
+                                <span>Menu</span>
+                            </a>
+                        </div>
+                        <!-- /Menu Toogle -->
+
+                    </div>
+                </div>
+                <!-- /ACCOUNT -->
+            </div>
+            <!-- row -->
+        </div>
+        <!-- container -->
+    </div>
+    <!-- /MAIN HEADER -->
+    <!-- NAVIGATION -->
+    <nav id="navigation">
+        <!-- container -->
+        <div class="container">
+            <!-- responsive-nav -->
+            <div id="responsive-nav">
+                <!-- NAV -->
+                <ul class="main-nav nav navbar-nav" id="nav-categories">
+                    <li class="active"><a href="/" data-id="0">Trang Chủ</a></li>
+                    <li><a href="/store/all" data-id="all">Sản Phẩm</a></li>
+                    <li><a href="/store?category=1" data-id="1">Laptop</a></li>
+                    <li><a href="/store?category=2" data-id="2">CPU</a></li>
+                    <li><a href="/store?category=3" data-id="3">GPU</a></li>
+                    <li><a href="/store?category=4" data-id="4">MainBoard</a></li>
+                    <li><a href="/store?category=5" data-id="5">RAM</a></li>
+                    <li><a href="/store?category=6" data-id="6">SSD</a></li>
+                    <li><a href="/store?category=7" data-id="7">Nguồn</a></li>
+                    <li><a href="/store?category=8" data-id="8">Chuột</a></li>
+                    <li><a href="/store?category=9" data-id="9">Bàn phím</a></li>
+                    <li><a href="/store?category=10" data-id="10">Màn hình</a></li>
+                    <li><a href="/store?category=11" data-id="11">Ghế</a></li>
+                    <li><a href="/store?category=12" data-id="12">Tai nghe</a></li>
+                </ul>
+
+                <!-- /NAV -->
+            </div>
+            <!-- /responsive-nav -->
+        </div>
+        <!-- /container -->
+    </nav>
+    <!-- /NAVIGATION -->
+    <script>
+
+        const searchForm = document.getElementById("search-form");
+        if (searchForm) {
+            searchForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const keyword = document.getElementById("search-input").value.trim();
+                if (keyword) {
+                    window.location.href = `/store?q=${encodeURIComponent(keyword)}`;
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async function (e) {
+                    e.preventDefault(); // Ngăn điều hướng mặc định
+
+                    const result = await Swal.fire({
+                        title: 'Xác nhận đăng xuất?',
+                        text: "Bạn có chắc chắn muốn đăng xuất khỏi tài khoản?",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d10024',
+                        cancelButtonColor: '#6c757d',
+                        confirmButtonText: 'Đăng xuất',
+                        cancelButtonText: 'Hủy'
+                    });
+
+                    if (result.isConfirmed) {
+                        // Điều hướng tới đường dẫn logout
+                        window.location.href = logoutBtn.getAttribute('href');
+                    }
+                });
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>

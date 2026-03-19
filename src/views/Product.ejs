@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title> VTVT Store - <%= product.name %>
+	</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="/css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="/css/slick-theme.css" />
+
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="/css/nouislider.min.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<!-- Quill -->
+	<link rel="stylesheet" href="/css/quill.snow.css">
+
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="/css/style.css" />
+	
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+	<%- include('./header.ejs') %>
+
+
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- Product main img -->
+					<div class="col-md-5 col-md-push-2">
+						<div id="product-main-img">
+							<% images.forEach(img=> { %>
+								<div class="product-preview">
+									<img src="/images/<%= img.URL %>" alt="Hình sản phẩm">
+								</div>
+								<% }) %>
+
+						</div>
+					</div>
+					<!-- /Product main img -->
+
+					<!-- Product thumb imgs -->
+					<div class="col-md-2  col-md-pull-5">
+						<div id="product-imgs">
+							<% images.forEach(img=> { %>
+								<div class="product-preview">
+									<img src="/images/<%= img.URL %>" alt="Hình sản phẩm">
+								</div>
+								<% }) %>
+						</div>
+					</div>
+					<!-- /Product thumb imgs -->
+
+					<!-- Chi tiết sản phẩm -->
+					<div class="col-md-5">
+						<div class="product-details">
+
+							<span id="detail-id" class="d-none product-id">
+								<%= product.id %>
+							</span>
+							<!-- Tên sản phẩm -->
+							<h2 class="product-name" id="detail-name">
+								<%= product.name %>
+							</h2>
+
+							<div>
+								<div class="product-rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<a class="review-link" href="#">10 Đánh giá | Thêm đánh giá của bạn</a>
+							</div>
+
+							<!-- Giá sản phẩm -->
+							<div>
+								<h3 class="product-price" id="detail-price">
+									<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ <del
+											class="product-old-price"></del>
+								</h3>
+							</div>
+
+							<!-- Thêm vào giỏ hàng -->
+							<% const mainImage=images && images.length ? images[0].URL : (product.image || 'default.png'
+								); %>
+
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn" data-id="<%= product.id %>"
+										data-img="/images/<%= mainImage %>" data-name="<%= product.name %>"
+										data-price="<%= product.retail_price %>">
+										<i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng
+									</button>
+								</div>
+
+								<ul class="product-links">
+									<li>Danh mục:</li>
+									<li><a href="/store?category=<%= product.category_id %>">
+											<%= product.category_name %>
+										</a></li>
+								</ul>
+						</div>
+					</div>
+					<!-- /Chi tiết sản phẩm -->
+
+
+
+					<!-- Tab sản phẩm -->
+					<div class="col-md-12">
+						<div id="product-tab">
+							<!-- thanh điều hướng tab -->
+							<ul class="tab-nav">
+								<li class="active"><a data-toggle="tab" href="#tab1">Mô Tả</a></li>
+								<li><a data-toggle="tab" href="#tab2">Thông Số</a></li>
+								<li><a data-toggle="tab" href="#tab3">Đánh Giá (3)</a></li>
+							</ul>
+							<!-- /thanh điều hướng tab -->
+
+							<!-- nội dung tab -->
+							<div class="tab-content">
+								<!-- tab1  -->
+								<div id="tab1" class="tab-pane fade in active">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="product-description ql-editor">
+												<%- product.description %>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /tab1  -->
+
+								<!-- tab2  -->
+								<div id="tab2" class="tab-pane fade in">
+									<div class="row">
+										<div class="col-md-12">
+											<% if (spec && spec.specs) { %>
+												<h3 class="mb-3">Thông số kỹ thuật:</h3>
+												<div id="specs-container">
+													<div class="fade-overlay"></div>
+													<table class="specs-table">
+														<tbody>
+															<% for (let key in spec.specs) { const
+																label=key.replace(/_/g, ' ' ); const
+																values=String(spec.specs[key]) .replace(/"/g, '' )
+																.split(',') .map(val=> val.trim())
+																.filter(val => val.length > 0)
+																.join('<br>');
+																%>
+																<tr>
+																	<th>
+																		<%= label %>
+																	</th>
+																	<td><%- values %></td>
+																</tr>
+																<% } %>
+														</tbody>
+													</table>
+												</div>
+
+												<div class="specs-toggle-wrapper text-center">
+													<a href="javascript:void(0)" id="toggle-specs-link"
+														class="specs-link">
+														<span class="link-text">Xem thêm</span>
+													</a>
+												</div>
+
+												<% } %>
+										</div>
+									</div>
+								</div>
+								<!-- /tab2  -->
+
+
+								<!-- tab3  -->
+								<div id="tab3" class="tab-pane fade in">
+									<div class="row">
+										<!-- Đánh giá -->
+										<div class="col-md-3">
+											<div id="rating">
+												<div class="rating-avg">
+													<span>4.5</span>
+													<div class="rating-stars">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star-o"></i>
+													</div>
+												</div>
+												<ul class="rating">
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+														</div>
+														<div class="rating-progress">
+															<div style="width: 80%;"></div>
+														</div>
+														<span class="sum">3</span>
+													</li>
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o"></i>
+														</div>
+														<div class="rating-progress">
+															<div style="width: 60%;"></div>
+														</div>
+														<span class="sum">2</span>
+													</li>
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+														</div>
+														<div class="rating-progress">
+															<div></div>
+														</div>
+														<span class="sum">0</span>
+													</li>
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+														</div>
+														<div class="rating-progress">
+															<div></div>
+														</div>
+														<span class="sum">0</span>
+													</li>
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+														</div>
+														<div class="rating-progress">
+															<div></div>
+														</div>
+														<span class="sum">0</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- /Đánh giá -->
+
+										<!-- Nhận xét -->
+										<div class="col-md-6">
+											<div id="reviews">
+												<ul class="reviews">
+													<li>
+														<div class="review-heading">
+															<h5 class="name">John</h5>
+															<p class="date">27 THÁNG 12 2018, 8:00 CH</p>
+															<div class="review-rating">
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star-o empty"></i>
+															</div>
+														</div>
+														<div class="review-body">
+															<p>Sản phẩm rất tốt, chất lượng vượt mong đợi.</p>
+														</div>
+													</li>
+													<li>
+														<div class="review-heading">
+															<h5 class="name">John</h5>
+															<p class="date">27 THÁNG 12 2018, 8:00 CH</p>
+															<div class="review-rating">
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star-o empty"></i>
+															</div>
+														</div>
+														<div class="review-body">
+															<p>Giao hàng nhanh, đóng gói cẩn thận. Rất hài lòng.</p>
+														</div>
+													</li>
+													<li>
+														<div class="review-heading">
+															<h5 class="name">John</h5>
+															<p class="date">27 THÁNG 12 2018, 8:00 CH</p>
+															<div class="review-rating">
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star-o empty"></i>
+															</div>
+														</div>
+														<div class="review-body">
+															<p>Sản phẩm đúng mô tả, sẽ ủng hộ lần sau.</p>
+														</div>
+													</li>
+												</ul>
+												<ul class="reviews-pagination">
+													<li class="active">1</li>
+													<li><a href="#">2</a></li>
+													<li><a href="#">3</a></li>
+													<li><a href="#">4</a></li>
+													<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+												</ul>
+											</div>
+										</div>
+										<!-- /Nhận xét -->
+
+										<!-- Form gửi đánh giá -->
+										<div class="col-md-3">
+											<div id="review-form">
+												<form class="review-form">
+													<input class="input" type="text" placeholder="Tên của bạn">
+													<input class="input" type="email" placeholder="Email của bạn">
+													<textarea class="input"
+														placeholder="Nội dung đánh giá của bạn"></textarea>
+													<div class="input-rating">
+														<span>Đánh giá của bạn: </span>
+														<div class="stars">
+															<input id="star5" name="rating" value="5"
+																type="radio"><label for="star5"></label>
+															<input id="star4" name="rating" value="4"
+																type="radio"><label for="star4"></label>
+															<input id="star3" name="rating" value="3"
+																type="radio"><label for="star3"></label>
+															<input id="star2" name="rating" value="2"
+																type="radio"><label for="star2"></label>
+															<input id="star1" name="rating" value="1"
+																type="radio"><label for="star1"></label>
+														</div>
+													</div>
+													<button class="primary-btn">Gửi đánh giá</button>
+												</form>
+											</div>
+										</div>
+										<!-- /Form gửi đánh giá -->
+
+									</div>
+								</div>
+								<!-- /tab3  -->
+							</div>
+							<!-- /product tab content  -->
+						</div>
+					</div>
+					<!-- /product tab -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- Section -->
+		<div class="section" style="margin-bottom: 50px;">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="section-title text-center">
+							<h3 class="title">Sản Phẩm Liên Quan</h3>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<div class="tab-pane active">
+									<% if (relatedProducts && relatedProducts.length> 0) { %>
+										<div class="products-slick" data-nav="#slick-nav-2">
+											<% relatedProducts.forEach(product=> { %>
+												<div class="product">
+													<span class="d-none product-id">
+														<%= product.id %>
+													</span>
+													<a href="/product/<%= product.id %>"
+														style="text-decoration: none; color: inherit;">
+														<div class="product-img">
+															<img src="/images/<%= product.image || 'noImage.jpg' %>"
+																alt="ảnh sản phẩm">
+															<div class="product-label">
+																<% if (product.sale_percent) { %>
+																	<span class="sale">-<%= product.sale_percent %>
+																			%</span>
+																	<% } %>
+																		<% if (product.is_new) { %>
+																			<span class="new">NEW</span>
+																			<% } %>
+															</div>
+														</div>
+													</a>
+													<div class="product-body">
+														<span class="d-none product-id">
+															<%= product.id %>
+														</span>
+														<p class="product-category">
+															<%= product.category_name %>
+														</p>
+														<h3 class="product-name" title="<%= product.name %>"><a
+																href="/product/<%=product.id%>">
+																<%= product.name %>
+															</a></h3>
+														<h4 class="product-price">
+															<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ
+																<% if (product.old_price) { %>
+																	<del class="product-old-price">
+																		<%= product.old_price %> VNĐ
+																	</del>
+																	<% } %>
+														</h4>
+														<div class="product-rating">
+															<% for (let i=0; i < 5; i++) { %>
+																<i class="fa <%= i < (product.rating || 0) ? 'fa-star' : 'fa-star' %>"
+																	style="margin-right: 1px;"></i>
+																<% } %>
+														</div>
+														<div class="product-btns">
+															<button class="add-to-compare" data-id="<%= product.id %>"
+																data-name="<%= product.name %>"
+																data-image="<%= product.image %>"
+																data-category="<%= product.category_id %>">
+																<i class="fa fa-exchange"></i>
+																<span class="tooltipp">So
+																	sánh</span>
+															</button>
+														</div>
+													</div>
+													<div class="add-to-cart">
+														<button class="add-to-cart-btn" data-id="<%= product.id %>"
+															data-img="/images/<%= product.image || 'default.png' %>"
+															data-name="<%= product.name %>"
+															data-price="<%= product.retail_price %>">
+															<i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng
+														</button>
+													</div>
+
+												</div>
+												<% }); %>
+										</div>
+										<div id="slick-nav-2" class="spotlight-products-slick-nav"></div>
+										<% } else { %>
+											<h5><i>
+													<p class="text-center text-muted">Không có sản phẩm liên quan.</p>
+												</i></h5>
+											<% } %>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- /Section -->
+
+		<!-- popup thumb image -->
+		<style>
+
+		</style>
+		<div id="imagePopupModal">
+			<span id="popupCloseBtn">&times;</span>
+			<button id="popupPrevBtn">&#10094;</button>
+			<img id="popupImage" src="" alt="Phóng to ảnh sản phẩm">
+			<button id="popupNextBtn">&#10095;</button>
+		</div>
+
+		<%- include('./footer.ejs')%>
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/bootstrap.min.js"></script>
+			<script src="/js/slick.min.js"></script>
+			<script src="/js/nouislider.min.js"></script>
+			<script src="/js/jquery.zoom.min.js"></script>
+			<script src="/js/specsToggle.js"></script>
+			<script src="/js/quill.js"></script>
+			<script src="/js/main.js"></script>
+			<script src="/js/cart.js"></script>
+			<script src="/js/popupImage.js"></script>
+			<script src="/js/lastViewedProducts.js"></script>
+
+</body>
+
+</html>

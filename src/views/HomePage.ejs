@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>VTVT Store - Trang chủ</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="/css/slick.css" />
+	<link type="text/css" rel="stylesheet" href="/css/slick-theme.css" />
+
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="/css/nouislider.min.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<!-- SweetAlert2 CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="/css/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+
+	<%- include('./header.ejs') %>
+
+		<!-- GAMING FESTIVAL BANNER FULLSCREEN -->
+		<div class="container-fluid banner-section">
+			<div class="row">
+
+				<!-- Banner bên trái 1 ảnh dọc lớn -->
+				<div class="col-md-2 left-banner">
+					<a href="/store/all">
+						<img src="/images/sale6.jpg" alt="Left Banner" class="img-fluid">
+					</a>
+				</div>
+
+				<!-- Banner slider -->
+				<div class="col-md-12">
+					<div class="row">
+						<div class="banner-tabs">
+							<!-- tab -->
+							<div id="banner-tab" class="tab-pane active">
+
+								<div class="banners-slick" data-nav="#banner-slick-nav">
+									<!-- banner -->
+									<a href="/store/all">
+										<div class="banner-item">
+											<img src="../images/banner1.jpg" alt="Banner 1" class="banner-img">
+										</div>
+									</a>
+									<a href="/store/all">
+										<div class="banner-item">
+											<img src="../images/banner2.jpg" alt="Banner 2" class="banner-img">
+										</div>
+									</a>
+									<a href="/store/all">
+										<div class="banner-item">
+											<img src="../images/banner3.jpg" alt="Banner 3" class="banner-img">
+										</div>
+									</a>
+									<a href="/store/all">
+										<div class="banner-item">
+											<img src="../images/banner4.jpg" alt="Banner 4" class="banner-img">
+										</div>
+									</a>
+									<a href="/store/all">
+										<div class="banner-item">
+											<img src="../images/banner5.jpg" alt="Banner 5" class="banner-img">
+										</div>
+									</a>
+									<a href="/store/all">
+										<div class="banner-item">
+											<img src="../images/banner6.jpg" alt="Banner 6" class="banner-img">
+										</div>
+									</a>
+									<a href="/store/all">
+										<div class="banner-item">
+											<img src="../images/banner7.jpg" alt="Banner 7" class="banner-img">
+										</div>
+									</a>
+									<a href="/store/all">
+										<div class="banner-item">
+											<img src="../images/banner8.jpg" alt="Banner 8-" class="banner-img">
+										</div>
+									</a>
+
+								</div>
+								<!-- <div id="banner-slick-nav" class="banners-slick-nav"></div> -->
+							</div>
+							<!-- /tab -->
+						</div>
+					</div>
+				</div>
+
+				<!-- Banner bên phải nhiều ảnh nhỏ -->
+				<div class="col-md-2 side-banners">
+					<a href="/store/all">
+						<img src="/images/sale8.jpg" alt="Side Banner 1" class="img-fluid mb-3">
+						<img src="/images/sale2.jpg" alt="Side Banner 2" class="img-fluid mb-3">
+						<img src="/images/sale3.jpg" alt="Side Banner 3" class="img-fluid mb-3">
+						<img src="/images/sale4.jpg" alt="Side Banner 4" class="img-fluid mb-3">
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- PRODUCT CATEGORIES -->
+		<div class="section">
+			<div class="container">
+				<h4 class="featured-categories-title" style="font-size: 24px;">DANH MỤC SẢN PHẨM</h4>
+				<div class="featured-categories-list">
+					<!-- Laptop -->
+					<a href="/store?category=1" class="featured-cat-item">
+						<div class="icon-box"><i class="fas fa-laptop"></i></div>
+						<div>Laptop</div>
+					</a>
+					<!-- CPU -->
+					<a href="/store?category=2" class="featured-cat-item">
+						<div class="icon-box"><i class="fas fa-microchip"></i></div>
+						<div>CPU</div>
+					</a>
+					<!-- GPU -->
+					<a href="/store?category=3" class="featured-cat-item">
+						<div class="icon-box">
+							<!-- SVG GPU icon -->
+							<svg width="36" height="24" viewBox="0 0 36 24" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<rect x="2" y="4" width="32" height="16" rx="3" stroke="currentColor" stroke-width="2"
+									fill="none" />
+								<circle cx="11" cy="12" r="4" stroke="currentColor" stroke-width="1.3" fill="none" />
+								<g stroke="currentColor" stroke-width="1.1">
+									<path d="M11 8V12" />
+									<path d="M11 12L8.5 10.5" />
+									<path d="M11 12L13.5 10.5" />
+									<path d="M11 12L8.5 13.5" />
+									<path d="M11 12L13.5 13.5" />
+									<path d="M11 12L11 16" />
+								</g>
+								<circle cx="11" cy="12" r="1.3" fill="currentColor" />
+								<circle cx="25" cy="12" r="4" stroke="currentColor" stroke-width="1.3" fill="none" />
+								<g stroke="currentColor" stroke-width="1.1">
+									<path d="M25 8V12" />
+									<path d="M25 12L22.5 10.5" />
+									<path d="M25 12L27.5 10.5" />
+									<path d="M25 12L22.5 13.5" />
+									<path d="M25 12L27.5 13.5" />
+									<path d="M25 12L25 16" />
+								</g>
+								<circle cx="25" cy="12" r="1.3" fill="currentColor" />
+								<rect x="0.6" y="6" width="1" height="3" rx="0.5" fill="currentColor" />
+								<rect x="0.6" y="11" width="1" height="2" rx="0.5" fill="currentColor" />
+								<rect x="0.6" y="15" width="1" height="3" rx="0.5" fill="currentColor" />
+							</svg>
+						</div>
+						<div>GPU</div>
+					</a>
+					<!-- Case -->
+					<a href="/store?category=18" class="featured-cat-item">
+						<div class="icon-box">
+							<!-- SVG CASE MÁY TÍNH -->
+							<svg width="24" height="32" viewBox="0 0 24 32" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<rect x="4" y="2" width="16" height="28" rx="3" stroke="currentColor" stroke-width="2"
+									fill="none" />
+								<circle cx="12" cy="7" r="1.3" fill="currentColor" />
+								<rect x="8" y="11" width="8" height="1.5" rx="0.5" fill="currentColor" />
+								<rect x="8" y="15" width="8" height="1.5" rx="0.5" fill="currentColor" />
+								<rect x="6" y="30" width="2" height="2" rx="1" fill="currentColor" />
+								<rect x="16" y="30" width="2" height="2" rx="1" fill="currentColor" />
+								<circle cx="8" cy="25" r="1" fill="currentColor" opacity="0.5" />
+								<circle cx="16" cy="25" r="1" fill="currentColor" opacity="0.5" />
+							</svg>
+						</div>
+						<div>Case</div>
+						<!-- RAM -->
+						<a href="/store?category=5" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-memory"></i></div>
+							<div>RAM</div>
+						</a>
+						<!-- SSD -->
+						<a href="/store?category=6" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-hdd"></i></div>
+							<div>SSD</div>
+						</a>
+						<!-- Ngồn -->
+						<a href="/store?category=7" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-plug"></i></div>
+							<div>Nguồn</div>
+						</a>
+						<!-- Chuột -->
+						<a href="/store?category=8" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-mouse"></i></div>
+							<div>Chuột</div>
+						</a>
+						<!-- Bàn phím -->
+						<a href="/store?category=9" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-keyboard"></i></div>
+							<div>Bàn phím</div>
+						</a>
+						<!-- Màn hình -->
+						<a href="/store?category=10" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-desktop"></i></div>
+							<div>Màn hình</div>
+						</a>
+						<!-- Ghế -->
+						<a href="/store?category=11" class="featured-cat-item">
+							<div class="icon-box">
+								<!-- SVG Ghế (icon giống Office Chair) -->
+								<svg width="24" height="32" viewBox="0 0 16 21" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path d="M3.42375 13.6057H12.5762" stroke="currentColor" stroke-width="1.5" />
+									<path
+										d="M3.4238 10.5999V14.6879C3.4238 15.2402 3.87151 15.6879 4.4238 15.6879H11.5763C12.1286 15.6879 12.5763 15.2402 12.5763 14.6879V10.6C12.5763 9.85202 12.3071 9.12907 11.8179 8.56331C11.706 8.43393 11.6913 8.24664 11.7753 8.09763C12.0408 7.62651 12.5763 6.57918 12.5763 5.79604C12.5763 5.02711 11.5738 3.90031 11.0494 3.36352C10.8544 3.16391 10.7346 2.89476 10.637 2.63335C10.545 2.38712 10.3694 2.04387 10.034 1.631C9.32994 0.76449 6.3573 0.815216 5.80972 1.63104C5.544 2.02692 5.40722 2.37444 5.33682 2.62732C5.26197 2.89614 5.14568 3.16391 4.95069 3.36352C4.42631 3.90031 3.4238 5.02711 3.4238 5.79604C3.4238 6.57918 3.95929 7.62651 4.22477 8.09764C4.30873 8.24664 4.29406 8.43393 4.18219 8.56331C3.693 9.12907 3.4238 9.85201 3.4238 10.5999Z"
+										stroke="currentColor" stroke-width="1.5" />
+									<path
+										d="M12.6666 14.6291H13.7406C14.2999 14.6291 14.7406 14.1814 14.7406 13.6291V11.4437"
+										stroke="currentColor" stroke-width="1.5" />
+									<path
+										d="M3.33347 14.6291H2.25943C1.70713 14.6291 1.25943 14.1814 1.25943 13.6291V11.4437"
+										stroke="currentColor" stroke-width="1.5" />
+									<path d="M15.7777 11.4437H13.7036" stroke="currentColor" stroke-width="1.5" />
+									<path d="M2.29638 11.4437H0.222336" stroke="currentColor" stroke-width="1.5" />
+									<path d="M8.00002 15.6906V18.876" stroke="currentColor" stroke-width="1.5" />
+									<rect x="3.31494" y="18.3146" width="2.11007" height="2.1444" rx="1.05554"
+										stroke="currentColor" stroke-width="1.5" />
+									<rect x="10.5741" y="18.3146" width="2.11007" height="2.1444" rx="1.05554"
+										stroke="currentColor" stroke-width="1.5" />
+									<path d="M4.37036 18.3452H11.6295" stroke="currentColor" stroke-width="1.5" />
+								</svg>
+							</div>
+							<div>Ghế</div>
+						</a>
+						<!-- Tai nghe -->
+						<a href="/store?category=12" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-headphones"></i></div>
+							<div>Tai nghe</div>
+						</a>
+						<!-- Thiết bị mạng -->
+						<a href="/store?category=13" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-wifi"></i></div>
+							<div>Thiết bị mạng</div>
+						</a>
+						<!-- Tản nhiệt -->
+						<a href="/store?category=14" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-fan"></i></div>
+							<div>Tản nhiệt</div>
+						</a>
+						<!-- Micro - Webcam -->
+						<a href="/store?category=15" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-video"></i></div>
+							<div>Micro Webcam</div>
+						</a>
+						<!-- Lót chuột -->
+						<a href="/store?category=16" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-layer-group"></i></div>
+							<div>Lót chuột</div>
+						</a>
+						<!-- Tay cầm -->
+						<a href="/store?category=17" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-gamepad"></i></div>
+							<div>Tay cầm</div>
+						</a>
+						<!-- Mainboard -->
+						<a href="/store?category=4" class="featured-cat-item">
+							<div class="icon-box"><i class="fas fa-project-diagram"></i></div>
+							<div>Mainboard</div>
+						</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- SECTION LAST VIEWED PRODUCT-->
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Sản phẩm đã xem gần đây</h3>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab-viewed" class="tab-pane active">
+									<div class="products-slick" data-nav="#slick-nav-viewed">
+										<% if (viewedProducts && viewedProducts.length> 0) { %>
+											<% viewedProducts.forEach(function(product) { %>
+												<div class="product">
+													<a href="/product/<%=product.id%>">
+														<span class="d-none product-id">
+															<%=product.id%>
+														</span>
+														<div class="product-img">
+															<img src="/images/<%= product.image || 'noImage.jpg' %>"
+																alt="ảnh sản phẩm">
+														</div>
+														<div class="product-body">
+															<p class="product-category">
+																<%= product.category_name || 'Danh mục' %>
+															</p>
+															<h3 class="product-name" title="<%= product.name %>"><a
+																	href="/product/<%=product.id%>">
+																	<%= product.name %>
+																</a></h3>
+															<h4 class="product-price">
+																<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ
+															</h4>
+															<div class="product-rating">
+																<% for (let i=0; i < 5; i++) { %>
+																	<i
+																		class="fa <%= i < (product.rating || 0) ? 'fa-star' : 'fa-star' %>"></i>
+																	<% } %>
+															</div>
+															<div class="product-btns">
+																<button class="add-to-compare"
+																	data-id="<%= product.id %>"
+																	data-name="<%= product.name %>"
+																	data-image="<%= product.image %>"
+																	data-category="<%= product.category_id %>">
+																	<i class="fa fa-exchange"></i>
+																	<span class="tooltipp">So sánh</span>
+																</button>
+															</div>
+														</div>
+														<div class="add-to-cart">
+															<button class="add-to-cart-btn" data-id="<%= product.id %>"
+																data-img="/images/<%= product.image || 'default.png' %>"
+																data-name="<%= product.name %>"
+																data-price="<%= product.retail_price %>">
+																<i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng
+															</button>
+														</div>
+													</a>
+												</div>
+												<% }) %>
+													<% } else { %>
+														<div class="col-12 text-center" style="padding: 40px; ">
+															<i class="fa fa-eye-slash fa-2x mb-3"
+																style="opacity: .65;"></i>
+															<h4><i style="opacity: .65;">Chưa có sản phẩm nào được xem
+																	gần đây!</i></h4>
+														</div>
+														<% } %>
+									</div>
+									<div id="slick-nav-viewed" class="spotlight-products-slick-nav"></div>
+								</div>
+								<!-- /tab -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /SECTION -->
+
+
+		<!-- SECTION NEW PRODUCT-->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Sản Phẩm Mới</h3>
+							<div class="section-nav">
+							</div>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab1" class="tab-pane active">
+									<div class="products-slick" data-nav="#slick-nav-1">
+										<% products.forEach((product)=> { %>
+											<div class="product">
+												<a href="/product/<%=product.id%>">
+													<span class="d-none product-id">
+														<%=product.id%>
+													</span>
+													<div class="product-img">
+														<img src="/images/<%= product.image || 'noImage.jpg' %>"
+															alt="ảnh sản phẩm">
+														<div class="product-label">
+
+														</div>
+													</div>
+													<div class="product-body">
+														<p class="product-category">
+															<%= product.category_name || 'Danh mục' %>
+														</p>
+														<h3 class="product-name" title="<%= product.name %>"><a
+																href="/product/<%=product.id%>">
+																<%= product.name %>
+															</a></h3>
+														<h4 class="product-price">
+															<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ
+														</h4>
+
+														<div class="product-rating">
+															<% for (let i=0; i < 5; i++) { %>
+																<i class="fa <%= i < (product.rating || 0) ? 'fa-star' : 'fa-star' %>"
+																	style="margin-right: 1px;"></i>
+																<% } %>
+														</div>
+														<div class="product-btns">
+															<button class="add-to-compare" data-id="<%= product.id %>"
+																data-name="<%= product.name %>"
+																data-image="<%= product.image %>"
+																data-category="<%= product.category_id %>">
+																<i class="fa fa-exchange"></i>
+																<span class="tooltipp">So sánh</span>
+															</button>
+
+														</div>
+													</div>
+													<div class="add-to-cart">
+														<button class="add-to-cart-btn" data-id="<%= product.id %>"
+															data-img="/images/<%= product.image || 'default.png' %>"
+															data-name="<%= product.name %>"
+															data-price="<%= product.retail_price %>">
+															<i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng
+														</button>
+													</div>
+												</a>
+
+
+											</div>
+
+											<% }) %>
+									</div>
+									<div id="slick-nav-1" class="spotlight-products-slick-nav"></div>
+								</div>
+								<!-- /tab -->
+							</div>
+						</div>
+					</div>
+					<!-- Products tab & slick -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- SECTION LAPTOP-->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">LapTop</h3>
+							<div class="section-nav">
+							</div>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab2" class="tab-pane fade in active">
+									<div class="products-slick text-left" data-nav="#slick-nav-2">
+										<% products.forEach(product=> {
+											if (product.category_name === 'Laptop') { %>
+											<div class="product">
+												<a href="/product/<%= product.id %>">
+													<span class="d-none product-id">
+														<%= product.id %>
+													</span>
+													<div class="product-img">
+														<img src="/images/<%= product.image || 'noImage.jpg' %>"
+															alt="ảnh sản phẩm">
+														<div class="product-label">
+															<% if (product.sale_percent) { %>
+																<span class="sale">-<%= product.sale_percent %>%</span>
+																<% } %>
+																	<% if (product.is_new) { %>
+																		<span class="new">NEW</span>
+																		<% } %>
+														</div>
+													</div>
+													<div class="product-body">
+														<p class="product-category">
+															<%= product.category_name %>
+														</p>
+														<h3 class="product-name" title="<%= product.name %>"><a
+																href="/product/<%=product.id%>">
+																<%= product.name %>
+															</a></h3>
+														<h4 class="product-price">
+															<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ
+
+														</h4>
+														<div class="product-rating">
+															<% for (let i=0; i < 5; i++) { %>
+																<i class="fa <%= i < (product.rating || 0) ? 'fa-star' : 'fa-star' %>"
+																	style="margin-right: 1px;"></i>
+																<% } %>
+														</div>
+														<div class="product-btns">
+															<button class="add-to-compare" data-id="<%= product.id %>"
+																data-name="<%= product.name %>"
+																data-image="<%= product.image %>"
+																data-category="<%= product.category_id %>">
+																<i class="fa fa-exchange"></i>
+																<span class="tooltipp">So sánh</span>
+															</button>
+														</div>
+													</div>
+													<div class="add-to-cart">
+														<button class="add-to-cart-btn" data-id="<%= product.id %>"
+															data-img="/images/<%= product.image || 'default.png' %>"
+															data-name="<%= product.name %>"
+															data-price="<%= product.retail_price %>">
+															<i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng
+														</button>
+													</div>
+												</a>
+											</div>
+											<% }}); %>
+									</div>
+									<div id="slick-nav-2" class="spotlight-products-slick-nav"></div>
+								</div>
+								<!-- /tab -->
+							</div>
+						</div>
+					</div>
+					<!-- /Products tab & slick -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- SECTION CASE-->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Case</h3>
+							<div class="section-nav">
+							</div>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab3" class="tab-pane fade in active">
+									<div class="products-slick text-left" data-nav="#slick-nav-3">
+										<% products.forEach(product=> {
+											if (product.category_name === 'Case') { %>
+											<div class="product">
+												<a href="/product/<%= product.id %>">
+													<span class="d-none product-id">
+														<%= product.id %>
+													</span>
+													<div class="product-img">
+														<img src="/images/<%= product.image || 'noImage.jpg' %>"
+															alt="ảnh sản phẩm">
+														<div class="product-label">
+															<% if (product.sale_percent) { %>
+																<span class="sale">-<%= product.sale_percent %>%</span>
+																<% } %>
+																	<% if (product.is_new) { %>
+																		<span class="new">NEW</span>
+																		<% } %>
+														</div>
+													</div>
+													<div class="product-body">
+														<p class="product-category">
+															<%= product.category_name %>
+														</p>
+														<h3 class="product-name" title="<%= product.name %>"><a
+																href="/product/<%=product.id%>">
+																<%= product.name %>
+															</a></h3>
+														<h4 class="product-price">
+															<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ
+
+														</h4>
+														<div class="product-rating">
+															<% for (let i=0; i < 5; i++) { %>
+																<i class="fa <%= i < (product.rating || 0) ? 'fa-star' : 'fa-star' %>"
+																	style="margin-right: 1px;"></i>
+																<% } %>
+														</div>
+														<div class="product-btns">
+															<button class="add-to-compare" data-id="<%= product.id %>"
+																data-name="<%= product.name %>"
+																data-image="<%= product.image %>"
+																data-category="<%= product.category_id %>">
+																<i class="fa fa-exchange"></i>
+																<span class="tooltipp">So sánh</span>
+															</button>
+														</div>
+													</div>
+													<div class="add-to-cart">
+														<button class="add-to-cart-btn" data-id="<%= product.id %>"
+															data-img="/images/<%= product.image || 'default.png' %>"
+															data-name="<%= product.name %>"
+															data-price="<%= product.retail_price %>">
+															<i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng
+														</button>
+													</div>
+												</a>
+											</div>
+											<% }}); %>
+									</div>
+									<div id="slick-nav-3" class="spotlight-products-slick-nav"></div>
+								</div>
+								<!-- /tab -->
+							</div>
+						</div>
+					</div>
+					<!-- /Products tab & slick -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+		<!-- //Màn Hinh -->
+
+		<!-- SECTION SCREEN-->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- section title -->
+					<div class="col-md-12">
+						<div class="section-title">
+							<h3 class="title">Màn Hình</h3>
+							<div class="section-nav">
+							</div>
+						</div>
+					</div>
+					<!-- /section title -->
+
+					<!-- Products tab & slick -->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab4" class="tab-pane fade in active">
+									<div class="products-slick text-left" data-nav="#slick-nav-4">
+										<% products.forEach(product=> {
+											if (product.category_name === 'Màn hình') { %>
+											<div class="product">
+												<a href="/product/<%= product.id %>">
+													<span class="d-none product-id">
+														<%= product.id %>
+													</span>
+													<div class="product-img">
+														<img src="/images/<%= product.image || 'noImage.jpg' %>"
+															alt="ảnh sản phẩm">
+														<div class="product-label">
+															<% if (product.sale_percent) { %>
+																<span class="sale">-<%= product.sale_percent %>%</span>
+																<% } %>
+																	<% if (product.is_new) { %>
+																		<span class="new">NEW</span>
+																		<% } %>
+														</div>
+													</div>
+													<div class="product-body">
+														<p class="product-category">
+															<%= product.category_name %>
+														</p>
+														<h3 class="product-name" title="<%= product.name %>"><a
+																href="/product/<%=product.id%>">
+																<%= product.name %>
+															</a></h3>
+														<h4 class="product-price">
+															<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ
+
+														</h4>
+														<div class="product-rating">
+															<% for (let i=0; i < 5; i++) { %>
+																<i class="fa <%= i < (product.rating || 0) ? 'fa-star' : 'fa-star' %>"
+																	style="margin-right: 1px;"></i>
+																<% } %>
+														</div>
+														<div class="product-btns">
+															<button class="add-to-compare" data-id="<%= product.id %>"
+																data-name="<%= product.name %>"
+																data-image="<%= product.image %>"
+																data-category="<%= product.category_id %>">
+																<i class="fa fa-exchange"></i>
+																<span class="tooltipp">So sánh</span>
+															</button>
+														</div>
+													</div>
+													<div class="add-to-cart">
+														<button class="add-to-cart-btn" data-id="<%= product.id %>"
+															data-img="/images/<%= product.image || 'default.png' %>"
+															data-name="<%= product.name %>"
+															data-price="<%= product.retail_price %>">
+															<i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng
+														</button>
+													</div>
+												</a>
+											</div>
+											<% }}); %>
+									</div>
+									<div id="slick-nav-4" class="spotlight-products-slick-nav"></div>
+								</div>
+								<!-- /tab -->
+							</div>
+						</div>
+					</div>
+					<!-- /Products tab & slick -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- WIDGET -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<!-- CỘT 1: Chuột -->
+					<div class="col-md-4 col-xs-6">
+						<div class="section-title">
+							<h4 class="title">Chuột</h4>
+							<div class="section-nav">
+								<div id="slick-nav-5" class="products-slick-nav"></div>
+							</div>
+						</div>
+
+						<div class="products-widget-slick" data-nav="#slick-nav-5">
+							<% const mouse=products.filter(p=> p.category_name === 'Chuột');
+								for (let i = 0; i < mouse.length; i +=3) { const group=mouse.slice(i, i + 3); %>
+									<div>
+										<% group.forEach(product=> { %>
+											<div class="product-widget">
+												<a href="/product/<%= product.id %>">
+													<div class="product-img">
+														<img src="/images/<%= product.image || 'noImage.jpg' %>"
+															alt="<%= product.name %>">
+													</div>
+												</a>
+
+												<div class="product-body">
+													<p class="product-category">
+														<%= product.category_name %>
+													</p>
+													<h3 class="product-name" title="<%= product.name %>"><a
+															href="/product/<%= product.id %>">
+															<%= product.name %>
+														</a></h3>
+													<h4 class="product-price">
+														<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ
+
+															<% if (product.old_price) { %>
+																<del class="product-old-price">
+																	<%= product.old_price %> VNĐ
+																</del>
+																<% } %>
+													</h4>
+												</div>
+											</div>
+											<% }) %>
+									</div>
+									<% } %>
+						</div>
+					</div>
+
+					<!-- CỘT 2: Bàn phím -->
+					<div class="col-md-4 col-xs-6">
+						<div class="section-title">
+							<h4 class="title">Bàn phím</h4>
+							<div class="section-nav">
+								<div id="slick-nav-6" class="products-slick-nav"></div>
+							</div>
+						</div>
+
+						<div class="products-widget-slick" data-nav="#slick-nav-6">
+							<% const keyboard=products.filter(p=> p.category_name === 'Bàn phím');
+								for (let i = 0; i < keyboard.length; i +=3) { const group=keyboard.slice(i, i + 3); %>
+									<div>
+										<% group.forEach(product=> { %>
+											<div class="product-widget">
+												<a href="/product/<%= product.id %>">
+													<div class="product-img">
+														<img src="/images/<%= product.image || 'noImage.jpg' %>"
+															alt="<%= product.name %>">
+													</div>
+												</a>
+
+												<div class="product-body">
+													<p class="product-category">
+														<%= product.category_name %>
+													</p>
+													<h3 class="product-name" title="<%= product.name %>"><a
+															href="/product/<%= product.id %>">
+															<%= product.name %>
+														</a></h3>
+													<h4 class="product-price">
+														<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ
+
+															<% if (product.old_price) { %>
+																<del class="product-old-price">
+																	<%= product.old_price %> VNĐ
+																</del>
+																<% } %>
+													</h4>
+												</div>
+											</div>
+											<% }) %>
+									</div>
+									<% } %>
+						</div>
+					</div>
+
+					<div class="clearfix visible-sm visible-xs"></div>
+
+					<!-- CỘT 3: CPU -->
+					<div class="col-md-4 col-xs-6">
+						<div class="section-title">
+							<h4 class="title">CPU</h4>
+							<div class="section-nav">
+								<div id="slick-nav-7" class="products-slick-nav"></div>
+							</div>
+						</div>
+
+						<div class="products-widget-slick" data-nav="#slick-nav-7">
+							<% const cpu=products.filter(p=> p.category_name === 'CPU');
+								for (let i = 0; i < cpu.length; i +=3) { const group=cpu.slice(i, i + 3); %>
+									<div>
+										<% group.forEach(product=> { %>
+											<div class="product-widget">
+												<a href="/product/<%= product.id %>">
+													<div class="product-img">
+														<img src="/images/<%= product.image || 'noImage.jpg' %>"
+															alt="<%= product.name %>">
+													</div>
+												</a>
+												<div class="product-body">
+													<p class="product-category">
+														<%= product.category_name %>
+													</p>
+													<h3 class="product-name" title="<%= product.name %>"><a
+															href="/product/<%= product.id %>">
+															<%= product.name %>
+														</a></h3>
+													<h4 class="product-price">
+														<%= product.retail_price.toLocaleString('vi-VN') %> VNĐ
+															<% if (product.old_price) { %>
+																<del class="product-old-price">
+																	<%= product.old_price %> VNĐ
+																</del>
+																<% } %>
+													</h4>
+												</div>
+											</div>
+											<% }) %>
+									</div>
+									<% } %>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /WIDGET -->
+		<div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+		<%- include('./footer.ejs') %>
+
+			<!-- jQuery Plugins -->
+			<script src="/js/jquery.min.js"></script>
+			<script src="/js/bootstrap.min.js"></script>
+			<script src="/js/slick.min.js"></script>
+			<script src="/js/nouislider.min.js"></script>
+			<script src="/js/jquery.zoom.min.js"></script>
+			<!-- SweetAlert2 JS -->
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+			<script src="/js/main.js"></script>
+			<script src="/js/cart.js"></script>
+			<script src="js/toastAlert.js"></script>
+
+
+</body>
+
+</html>
